@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXO - Level Test</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="test-page">
+
+        <!-- Top navigation -->
+        <div class="test-topbar">
+
+            <button class="back-button" onclick="goBack()">
+                <span>←</span>
+            </button>
+
+            <div class="test-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+
+        <!-- Main test -->
+        <div class="test-container">
+
+            <h1>Test your Level</h1>
+
+            <p class="question-number" id="question-number">
+                Question 1 / 20
+            </p>
+
+
+            <!-- Progress bar -->
+            <div class="progress-container">
+
+                <div
+                    class="progress-bar"
+                    id="progress-bar">
+                </div>
+
+            </div>
+
+
+            <!-- Question -->
+            <h2 id="question-text">
+                Which HTML tag is used to create a hyperlink?
+            </h2>
+
+
+            <!-- Answers -->
+            <div class="answers" id="answers-container">
+
+                <!-- JavaScript will insert answers here -->
+
+            </div>
+
+
+            <!-- Next button -->
+            <button
+                class="next-btn"
+                id="next-btn"
+                onclick="nextQuestion()">
+
+                <span>Next</span>
+                <span class="next-arrow">→</span>
+
+            </button>
+
+        </div>
+
+
+        
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

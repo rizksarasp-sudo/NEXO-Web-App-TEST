@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>NEXO - Your Learning Path</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background: #ffffff;
+
+            color: #111827;
+
+        }
+
+
+        /* =========================
+           PAGE
+           ========================= */
+
+        .playlist-page {
+
+            min-height: 100vh;
+
+            max-width: 900px;
+
+            margin: auto;
+
+            padding: 55px 40px 70px;
+
+        }
+
+
+        /* =========================
+           TOP
+           ========================= */
+
+        .playlist-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 45px;
+
+        }
+
+
+        .back-button {
+
+            border: none;
+
+            background: transparent;
+
+            font-size: 38px;
+
+            color: #687083;
+
+            cursor: pointer;
+
+        }
+
+
+        .dots {
+
+            font-size: 30px;
+
+            letter-spacing: 5px;
+
+            color: #707070;
+
+        }
+
+
+        /* =========================
+           HEADER
+           ========================= */
+
+        .playlist-header {
+
+            max-width: 720px;
+
+            margin: auto;
+
+        }
+
+
+        .playlist-header h1 {
+
+            font-size: 50px;
+
+            line-height: 1.05;
+
+            font-weight: 800;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .playlist-header p {
+
+            font-size: 21px;
+
+            line-height: 1.45;
+
+            color: #4f5665;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .level-badge {
+
+            display: inline-block;
+
+            padding: 8px 18px;
+
+            border-radius: 30px;
+
+            background: #e6f7ed;
+
+            color: #1a9b50;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =========================
+           PROGRESS
+           ========================= */
+
+        .progress-box {
+
+            max-width: 720px;
+
+            margin: 35px auto;
+
+        }
+
+
+        .progress-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 10px;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+        }
+
+
+        .progress-bar {
+
+            width: 100%;
+
+            height: 8px;
+
+            background: #e9edf5;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+        }
+
+
+        .progress-fill {
+
+            height: 100%;
+
+            width: 0%;
+
+            background: #3157ff;
+
+            border-radius: 20px;
+
+        }
+
+
+        /* =========================
+           CURRENT MODULE
+           ========================= */
+
+        .module {
+
+            max-width: 720px;
+
+            margin: 40px auto;
+
+        }
+
+
+        .module-header {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .module-label {
+
+            color: #3157ff;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .module-title {
+
+            font-size: 30px;
+
+            margin-top: 7px;
+
+        }
+
+
+        .module-description {
+
+            margin-top: 8px;
+
+            color: #7b8497;
+
+            font-size: 16px;
+
+        }
+
+
+        /* =========================
+           LESSON
+           ========================= */
+
+        .lesson {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            padding: 20px;
+
+            margin-bottom: 14px;
+
+            border: 1px solid #edf0f6;
+
+            border-radius: 20px;
+
+            background: white;
+
+            box-shadow:
+                0 7px 22px rgba(30, 50, 100, 0.05);
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        .lesson:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 28px rgba(30, 50, 100, 0.09);
+
+        }
+
+
+        .lesson-number {
+
+            width: 48px;
+
+            height: 48px;
+
+            border-radius: 50%;
+
+            background: #eef3ff;
+
+            color: #3157ff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: 700;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .lesson-info {
+
+            flex: 1;
+
+        }
+
+
+        .lesson-info h3 {
+
+            font-size: 18px;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .lesson-info p {
+
+            color: #7b8497;
+
+            font-size: 14px;
+
+        }
+
+
+        .lesson-duration {
+
+            color: #7b8497;
+
+            font-size: 14px;
+
+            white-space: nowrap;
+
+        }
+
+
+        .play {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 50%;
+
+            background: #3157ff;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 17px;
+
+            flex-shrink: 0;
+
+        }
+
+
+        /* =========================
+           VIDEO STATUS
+           ========================= */
+
+        .coming-soon {
+
+            display: inline-block;
+
+            margin-top: 5px;
+
+            color: #8a93a5;
+
+            font-size: 12px;
+
+        }
+
+
+        /* =========================
+           OTHER MODULES
+           ========================= */
+
+        .next-module {
+
+            max-width: 720px;
+
+            margin: 45px auto 0;
+
+            padding: 25px;
+
+            border: 1px solid #edf0f6;
+
+            border-radius: 22px;
+
+            background: #fafbff;
+
+        }
+
+
+        .next-module h2 {
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .next-module p {
+
+            color: #7b8497;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 600px) {
+
+            .playlist-page {
+
+                padding: 35px 18px 50px;
+
+            }
+
+
+            .playlist-header h1 {
+
+                font-size: 39px;
+
+            }
+
+
+            .playlist-header p {
+
+                font-size: 18px;
+
+            }
+
+
+            .module-title {
+
+                font-size: 25px;
+
+            }
+
+
+            .lesson {
+
+                padding: 15px;
+
+                gap: 12px;
+
+            }
+
+
+            .lesson-number {
+
+                width: 40px;
+
+                height: 40px;
+
+            }
+
+
+            .lesson-info h3 {
+
+                font-size: 16px;
+
+            }
+
+
+            .lesson-duration {
+
+                display: none;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="playlist-page">
+
+
+    <!-- =========================
+         TOP
+         ========================= -->
+
+    <div class="playlist-top">
+
+        <button
+            class="back-button"
+            onclick="goBack()">
+
+            ←
+
+        </button>
+
+
+        <div class="dots">
+
+            •••
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <div class="playlist-header">
+
+        <h1>
+            Your Learning Path
+        </h1>
+
+
+        <p>
+            Follow your personalized roadmap
+            and learn step by step.
+        </p>
+
+
+        <div
+            id="level-badge"
+            class="level-badge">
+
+            Beginner
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PROGRESS
+         ========================= -->
+
+    <div class="progress-box">
+
+        <div class="progress-top">
+
+            <span>
+                Your progress
+            </span>
+
+            <span id="progress-text">
+                0%
+            </span>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div
+                id="progress-fill"
+                class="progress-fill">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CURRENT MODULE
+         ========================= -->
+
+    <div
+        id="module-container"
+        class="module">
+
+    </div>
+
+
+    <!-- =========================
+         NEXT MODULE
+         ========================= -->
+
+    <div
+        id="next-module"
+        class="next-module">
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+    // =====================================================
+    // GET USER INFORMATION
+    // =====================================================
+
+    const percentage = Number(
+        localStorage.getItem(
+            "nexoLevelTestPercentage"
+        )
+    );
+
+
+    const level =
+        localStorage.getItem(
+            "nexoUserLevel"
+        ) || "Beginner";
+
+
+    const startIndex = Number(
+        localStorage.getItem(
+            "nexoRoadmapStart"
+        )
+    ) || 0;
+
+
+    // =====================================================
+    // ELEMENTS
+    // =====================================================
+
+    const levelBadge =
+        document.getElementById(
+            "level-badge"
+        );
+
+
+    const moduleContainer =
+        document.getElementById(
+            "module-container"
+        );
+
+
+    const nextModule =
+        document.getElementById(
+            "next-module"
+        );
+
+
+    const progressText =
+        document.getElementById(
+            "progress-text"
+        );
+
+
+    const progressFill =
+        document.getElementById(
+            "progress-fill"
+        );
+
+
+    // =====================================================
+    // LEVEL
+    // =====================================================
+
+    levelBadge.textContent = level;
+
+
+    // =====================================================
+    // PERSONALIZED MODULES
+    // =====================================================
+
+    const modules = [
+
+        {
+            title: "HTML & CSS",
+            description:
+                "Build the foundation of modern websites.",
+
+            lessons: [
+
+                {
+                    title: "Introduction to HTML",
+                    description:
+                        "Understand what HTML is and how webpages are structured.",
+                    duration: "12 min"
+                },
+
+                {
+                    title: "HTML Structure",
+                    description:
+                        "Learn elements, headings, paragraphs and links.",
+                    duration: "15 min"
+                },
+
+                {
+                    title: "Introduction to CSS",
+                    description:
+                        "Learn how CSS controls the appearance of a webpage.",
+                    duration: "18 min"
+                },
+
+                {
+                    title: "Layouts with Flexbox",
+                    description:
+                        "Create modern layouts using Flexbox.",
+                    duration: "22 min"
+                }
+
+            ]
+        },
+
+
+        {
+            title: "JavaScript",
+            description:
+                "Make your websites interactive and dynamic.",
+
+            lessons: [
+
+                {
+                    title: "JavaScript Introduction",
+                    description:
+                        "Understand JavaScript and how it works in the browser.",
+                    duration: "15 min"
+                },
+
+                {
+                    title: "Variables & Data",
+                    description:
+                        "Learn variables, strings, numbers and booleans.",
+                    duration: "20 min"
+                },
+
+                {
+                    title: "Conditions & Loops",
+                    description:
+                        "Learn how to control the flow of your programs.",
+                    duration: "24 min"
+                },
+
+                {
+                    title: "Functions",
+                    description:
+                        "Create reusable blocks of code.",
+                    duration: "20 min"
+                }
+
+            ]
+        },
+
+
+        {
+            title: "React",
+            description:
+                "Build modern user interfaces with React.",
+
+            lessons: [
+
+                {
+                    title: "Introduction to React",
+                    description:
+                        "Understand React and component-based development.",
+                    duration: "18 min"
+                },
+
+                {
+                    title: "Components",
+                    description:
+                        "Build reusable React components.",
+                    duration: "22 min"
+                },
+
+                {
+                    title: "Props & State",
+                    description:
+                        "Learn how components communicate and manage data.",
+                    duration: "25 min"
+                },
+
+                {
+                    title: "React Hooks",
+                    description:
+                        "Understand the most important React hooks.",
+                    duration: "28 min"
+                }
+
+            ]
+        },
+
+
+        {
+            title: "Backend (Node.js)",
+            description:
+                "Learn how the server side of applications works.",
+
+            lessons: [
+
+                {
+                    title: "Introduction to Node.js",
+                    description:
+                        "Understand backend development with Node.js.",
+                    duration: "18 min"
+                },
+
+                {
+                    title: "Building APIs",
+                    description:
+                        "Create your first backend API.",
+                    duration: "25 min"
+                },
+
+                {
+                    title: "Authentication",
+                    description:
+                        "Understand login and authentication systems.",
+                    duration: "30 min"
+                }
+
+            ]
+        },
+
+
+        {
+            title: "Projects",
+            description:
+                "Put everything together and build real projects.",
+
+            lessons: [
+
+                {
+                    title: "Choose Your Project",
+                    description:
+                        "Define your idea and project goals.",
+                    duration: "10 min"
+                },
+
+                {
+                    title: "Build Your Project",
+                    description:
+                        "Turn your knowledge into a complete project.",
+                    duration: "—"
+                },
+
+                {
+                    title: "Showcase Your Work",
+                    description:
+                        "Prepare your project for your portfolio.",
+                    duration: "—"
+                }
+
+            ]
+        }
+
+    ];
+
+
+    // =====================================================
+    // GET CURRENT MODULE
+    // =====================================================
+
+    let currentModuleIndex = startIndex;
+
+
+    if (
+        currentModuleIndex < 0 ||
+        currentModuleIndex >= modules.length
+    ) {
+
+        currentModuleIndex = 0;
+
+    }
+
+
+    const currentModule =
+        modules[currentModuleIndex];
+
+
+    // =====================================================
+    // DISPLAY MODULE
+    // =====================================================
+
+    moduleContainer.innerHTML = `
+
+        <div class="module-header">
+
+            <div class="module-label">
+                Module ${currentModuleIndex + 1}
+            </div>
+
+            <h2 class="module-title">
+                ${currentModule.title}
+            </h2>
+
+            <p class="module-description">
+                ${currentModule.description}
+            </p>
+
+        </div>
+
+    `;
+
+
+    // =====================================================
+    // DISPLAY LESSONS
+    // =====================================================
+
+    currentModule.lessons.forEach(
+        function(lesson, index) {
+
+
+            const lessonElement =
+                document.createElement("div");
+
+
+            lessonElement.className =
+                "lesson";
+
+
+            lessonElement.innerHTML = `
+
+                <div class="lesson-number">
+
+                    ${index + 1}
+
+                </div>
+
+
+                <div class="lesson-info">
+
+                    <h3>
+                        ${lesson.title}
+                    </h3>
+
+                    <p>
+                        ${lesson.description}
+                    </p>
+
+                    <span class="coming-soon">
+                        Video coming soon
+                    </span>
+
+                </div>
+
+
+                <div class="lesson-duration">
+
+                    ${lesson.duration}
+
+                </div>
+
+
+                <div class="play">
+
+                    ▶
+
+                </div>
+
+            `;
+
+
+            lessonElement.onclick =
+                function() {
+
+                    openLesson(
+                        currentModuleIndex,
+                        index
+                    );
+
+                };
+
+
+            moduleContainer.appendChild(
+                lessonElement
+            );
+
+        }
+    );
+
+
+    // =====================================================
+    // NEXT MODULE
+    // =====================================================
+
+    if (
+        currentModuleIndex <
+        modules.length - 1
+    ) {
+
+        const next =
+            modules[
+                currentModuleIndex + 1
+            ];
+
+
+        nextModule.innerHTML = `
+
+            <h2>
+                Next: ${next.title}
+            </h2>
+
+            <p>
+                Complete the current module
+                to continue to ${next.title}.
+            </p>
+
+        `;
+
+    }
+
+    else {
+
+        nextModule.innerHTML = `
+
+            <h2>
+                🎉 You've reached the end
+            </h2>
+
+            <p>
+                Complete these projects and
+                showcase what you've learned.
+            </p>
+
+        `;
+
+    }
+
+
+    // =====================================================
+    // PROGRESS
+    // =====================================================
+
+    const progress =
+        Math.round(
+            (currentModuleIndex /
+            (modules.length - 1)) * 100
+        );
+
+
+    progressText.textContent =
+        progress + "%";
+
+
+    progressFill.style.width =
+        progress + "%";
+
+
+    // =====================================================
+    // OPEN LESSON
+    // =====================================================
+
+    function openLesson(
+        moduleIndex,
+        lessonIndex
+    ) {
+
+        localStorage.setItem(
+            "nexoCurrentModule",
+            moduleIndex
+        );
+
+
+        localStorage.setItem(
+            "nexoCurrentLesson",
+            lessonIndex
+        );
+
+
+        window.location.href =
+            "video.html";
+
+    }
+
+
+    // =====================================================
+    // BACK
+    // =====================================================
+
+    function goBack() {
+
+        window.history.back();
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>NEXO - Your Personalized Roadmap</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background: #ffffff;
+
+            color: #111827;
+
+        }
+
+
+        .roadmap-page {
+
+            min-height: 100vh;
+
+            width: 100%;
+
+            max-width: 900px;
+
+            margin: auto;
+
+            padding: 55px 40px 70px;
+
+        }
+
+
+        /* =========================
+           TOP BAR
+           ========================= */
+
+        .roadmap-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 45px;
+
+        }
+
+
+        .back-button {
+
+            border: none;
+
+            background: transparent;
+
+            font-size: 38px;
+
+            color: #687083;
+
+            cursor: pointer;
+
+            line-height: 1;
+
+        }
+
+
+        .dots {
+
+            font-size: 30px;
+
+            letter-spacing: 5px;
+
+            color: #707070;
+
+        }
+
+
+        /* =========================
+           TITLE
+           ========================= */
+
+        .roadmap-header {
+
+            max-width: 720px;
+
+            margin: auto;
+
+        }
+
+
+        .roadmap-header h1 {
+
+            font-size: 52px;
+
+            line-height: 1.05;
+
+            font-weight: 800;
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .roadmap-header p {
+
+            font-size: 23px;
+
+            line-height: 1.4;
+
+            max-width: 600px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .level-badge {
+
+            display: inline-block;
+
+            padding: 8px 18px;
+
+            border-radius: 30px;
+
+            background: #e6f7ed;
+
+            color: #1a9b50;
+
+            font-weight: 700;
+
+            font-size: 15px;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        /* =========================
+           ROADMAP
+           ========================= */
+
+        #roadmap {
+
+            width: 100%;
+
+            max-width: 720px;
+
+            margin: 0 auto 45px;
+
+        }
+
+
+        .roadmap-item {
+
+            display: grid;
+
+            grid-template-columns: 70px 1fr;
+
+            min-height: 125px;
+
+        }
+
+
+        /* =========================
+           TIMELINE
+           ========================= */
+
+        .timeline {
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+
+        }
+
+
+        .timeline::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 44px;
+
+            bottom: -10px;
+
+            width: 2px;
+
+            background: #d7e1ff;
+
+        }
+
+
+        .roadmap-item:last-child
+        .timeline::after {
+
+            display: none;
+
+        }
+
+
+        .circle {
+
+            width: 44px;
+
+            height: 44px;
+
+            border-radius: 50%;
+
+            background: #f1f5ff;
+
+            border: 2px solid #cbd8fa;
+
+            color: #5d78be;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .current .circle {
+
+            background: #3157ff;
+
+            border-color: #3157ff;
+
+            color: white;
+
+            box-shadow:
+                0 0 0 8px rgba(49, 87, 255, 0.10);
+
+        }
+
+
+        .completed .circle {
+
+            background: #3157ff;
+
+            border-color: #3157ff;
+
+            color: white;
+
+        }
+
+
+        /* =========================
+           CARD
+           ========================= */
+
+        .roadmap-card {
+
+            background: white;
+
+            border: 1px solid #edf0f6;
+
+            border-radius: 22px;
+
+            min-height: 105px;
+
+            padding: 20px 24px;
+
+            margin-bottom: 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            box-shadow:
+                0 7px 25px rgba(30, 50, 100, 0.06);
+
+        }
+
+
+        .card-number {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 50%;
+
+            border: 2px solid #d9e3ff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #3157ff;
+
+            font-weight: 700;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .card-content {
+
+            flex: 1;
+
+        }
+
+
+        .title-row {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+        }
+
+
+        .title-row h2 {
+
+            font-size: 22px;
+
+            color: #172033;
+
+        }
+
+
+        .description {
+
+            margin-top: 8px;
+
+            color: #7b8497;
+
+            font-size: 16px;
+
+        }
+
+
+        /* =========================
+           BADGES
+           ========================= */
+
+        .badge {
+
+            padding: 7px 14px;
+
+            border-radius: 30px;
+
+            background: #e7f7ed;
+
+            color: #229953;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+        }
+
+
+        .badge.intermediate {
+
+            background: #edf3ff;
+
+            color: #4f72ff;
+
+        }
+
+
+        .badge.advanced {
+
+            background: #e9efff;
+
+            color: #3157ff;
+
+        }
+
+
+        /* =========================
+           BUTTONS
+           ========================= */
+
+        .roadmap-buttons {
+
+            max-width: 720px;
+
+            margin: auto;
+
+        }
+
+
+        .follow-button {
+
+            width: 100%;
+
+            height: 62px;
+
+            border: none;
+
+            border-radius: 40px;
+
+            background: #2700d9;
+
+            color: white;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 25px rgba(39, 0, 217, 0.18);
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .choose-button {
+
+            width: 100%;
+
+            height: 62px;
+
+            border-radius: 40px;
+
+            background: white;
+
+            border: 3px dotted #222;
+
+            color: #4f72ff;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 600px) {
+
+            .roadmap-page {
+
+                padding: 35px 18px 50px;
+
+            }
+
+
+            .roadmap-header h1 {
+
+                font-size: 39px;
+
+            }
+
+
+            .roadmap-header p {
+
+                font-size: 18px;
+
+            }
+
+
+            .roadmap-item {
+
+                grid-template-columns: 48px 1fr;
+
+            }
+
+
+            .circle {
+
+                width: 36px;
+
+                height: 36px;
+
+                font-size: 14px;
+
+            }
+
+
+            .roadmap-card {
+
+                padding: 16px;
+
+                border-radius: 18px;
+
+            }
+
+
+            .title-row {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 8px;
+
+            }
+
+
+            .title-row h2 {
+
+                font-size: 18px;
+
+            }
+
+
+            .description {
+
+                font-size: 14px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="roadmap-page">
+
+
+    <!-- =========================
+         TOP
+         ========================= -->
+
+    <div class="roadmap-top">
+
+        <button
+            class="back-button"
+            onclick="goBack()">
+
+            ←
+
+        </button>
+
+
+        <div class="dots">
+
+            •••
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <div class="roadmap-header">
+
+        <h1>
+            Your Personalized<br>
+            Roadmap
+        </h1>
+
+
+        <p>
+            Based on your test we recommend
+            this path for you
+        </p>
+
+
+        <div
+            id="level-text"
+            class="level-badge">
+
+            Beginner
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ROADMAP
+         ========================= -->
+
+    <div id="roadmap"></div>
+
+
+    <!-- =========================
+         BUTTONS
+         ========================= -->
+
+    <div class="roadmap-buttons">
+
+        <button
+            class="follow-button"
+            onclick="followRoadmap()">
+
+            Follow this roadmap
+
+        </button>
+
+
+        <button
+            class="choose-button"
+            onclick="chooseMyself()">
+
+            I’ll choose by myself
+
+        </button>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+    // =====================================================
+    // GET SCORE FROM LEVEL TEST
+    // =====================================================
+
+    const score = Number(
+        localStorage.getItem("nexoLevelTestScore")
+    );
+
+
+    const percentage = Number(
+        localStorage.getItem("nexoLevelTestPercentage")
+    );
+
+
+    // =====================================================
+    // ELEMENTS
+    // =====================================================
+
+    const roadmap =
+        document.getElementById("roadmap");
+
+
+    const levelText =
+        document.getElementById("level-text");
+
+
+    // =====================================================
+    // DETERMINE LEVEL
+    // =====================================================
+
+    let level = "Beginner";
+
+
+    if (percentage >= 70) {
+
+        level = "Advanced";
+
+    }
+
+    else if (percentage >= 40) {
+
+        level = "Intermediate";
+
+    }
+
+
+    levelText.textContent = level;
+
+
+    // =====================================================
+    // ROADMAP DATA
+    // =====================================================
+
+    const roadmapData = [
+
+        {
+            title: "HTML & CSS",
+            description: "Start Here",
+            badge: "Beginner"
+        },
+
+        {
+            title: "JavaScript",
+            description: "Unlock after HTML & CSS",
+            badge: "Intermediate"
+        },
+
+        {
+            title: "React",
+            description: "Unlock after JavaScript",
+            badge: "Advanced"
+        },
+
+        {
+            title: "Backend (Node.js)",
+            description: "Unlock after React",
+            badge: "Advanced"
+        },
+
+        {
+            title: "Projects",
+            description: "Build & Showcase",
+            badge: ""
+        }
+
+    ];
+
+
+    // =====================================================
+    // DETERMINE STARTING POINT FROM SCORE
+    // =====================================================
+
+    let startIndex = 0;
+
+
+    if (percentage >= 90) {
+
+        startIndex = 4;
+
+    }
+
+    else if (percentage >= 75) {
+
+        startIndex = 3;
+
+    }
+
+    else if (percentage >= 55) {
+
+        startIndex = 2;
+
+    }
+
+    else if (percentage >= 35) {
+
+        startIndex = 1;
+
+    }
+
+    else {
+
+        startIndex = 0;
+
+    }
+
+
+    // =====================================================
+    // DISPLAY ROADMAP
+    // =====================================================
+
+    roadmap.innerHTML = "";
+
+
+    roadmapData.forEach(function(item, index) {
+
+
+        let state = "locked";
+
+        let description = item.description;
+
+
+        // CURRENT STEP
+
+        if (index === startIndex) {
+
+            state = "current";
+
+            description = "Start Here";
+
+        }
+
+
+        // COMPLETED STEPS
+
+        else if (index < startIndex) {
+
+            state = "completed";
+
+            description = "Already covered";
+
+        }
+
+
+        // FUTURE STEPS
+
+        else {
+
+            state = "locked";
+
+        }
+
+
+        // BADGE CLASS
+
+        let badgeClass = "";
+
+
+        if (item.badge === "Intermediate") {
+
+            badgeClass = "intermediate";
+
+        }
+
+
+        if (item.badge === "Advanced") {
+
+            badgeClass = "advanced";
+
+        }
+
+
+        // CREATE ITEM
+
+        const element =
+            document.createElement("div");
+
+
+        element.className =
+            "roadmap-item " + state;
+
+
+        element.innerHTML = `
+
+            <div class="timeline">
+
+                <div class="circle">
+
+                    ${index + 1}
+
+                </div>
+
+            </div>
+
+
+            <div class="roadmap-card">
+
+                <div class="card-number">
+
+                    ${index + 1}
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <div class="title-row">
+
+                        <h2>
+                            ${item.title}
+                        </h2>
+
+
+                        ${
+                            item.badge
+                            ?
+                            `<span class="badge ${badgeClass}">
+                                ${item.badge}
+                            </span>`
+                            :
+                            ""
+                        }
+
+                    </div>
+
+
+                    <p class="description">
+
+                        ${description}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        roadmap.appendChild(element);
+
+    });
+
+
+    // =====================================================
+    // BUTTON FUNCTIONS
+    // =====================================================
+
+    function goBack() {
+
+        window.history.back();
+
+    }
+
+
+    function followRoadmap() {
+
+    window.location.href = "playlist.html";
+
+}
+
+
+    function chooseMyself() {
+
+        alert(
+            "You can choose your own learning path."
+        );
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>

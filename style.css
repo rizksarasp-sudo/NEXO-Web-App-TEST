@@ -1,0 +1,2672 @@
+/* =========================================================
+   NEXO - GLOBAL
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #3157ff;
+    --blue-dark: #2446dc;
+    --navy: #111827;
+    --text: #172033;
+    --muted: #7b8497;
+    --border: #e5e9f2;
+    --white: #ffffff;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: var(--text);
+}
+
+
+/* =========================================================
+   NEXO - HOME PAGE
+   ========================================================= */
+
+.welcome-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+
+    background: #ffffff;
+}
+
+.welcome-content {
+    width: 100%;
+    max-width: 450px;
+
+    text-align: center;
+}
+
+.welcome-content h1 {
+    font-size: 48px;
+    line-height: 1.1;
+    font-weight: 700;
+
+    margin-bottom: 18px;
+}
+
+.tagline {
+    font-size: 18px;
+    color: #64748b;
+
+    margin-bottom: 40px;
+}
+
+.auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.btn {
+    width: 100%;
+
+    padding: 16px;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.signup-btn {
+    background: var(--blue);
+    color: white;
+
+    border: 2px solid var(--blue);
+}
+
+.login-btn {
+    background: white;
+    color: var(--blue);
+
+    border: 2px solid var(--blue);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.auth-buttons a {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.continue-text {
+    margin: 30px 0 18px;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.social-btn {
+    flex: 1;
+
+    padding: 14px;
+
+    background: white;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+.social-btn:hover {
+    background: #f8fafc;
+}
+
+
+/* =========================================================
+   AUTH PAGES - SIGN UP / LOGIN
+   ========================================================= */
+
+.auth-page {
+    min-height: 100vh;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 7%;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(49, 87, 255, 0.08),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(75, 210, 180, 0.10),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f8faff 50%,
+            #ffffff 100%
+        );
+}
+
+
+/* Decorative background */
+
+.auth-glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(5px);
+}
+
+.auth-glow-one {
+    width: 420px;
+    height: 420px;
+
+    top: -220px;
+    right: -130px;
+
+    background: rgba(49, 87, 255, 0.07);
+}
+
+.auth-glow-two {
+    width: 350px;
+    height: 350px;
+
+    bottom: -200px;
+    left: -120px;
+
+    background: rgba(75, 210, 180, 0.08);
+}
+
+
+/* Main auth layout */
+
+.auth-layout {
+    width: 100%;
+    max-width: 1180px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 470px;
+
+    gap: 90px;
+
+    align-items: center;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+   ========================================================= */
+
+.auth-intro {
+    min-height: 620px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 15px 0;
+}
+
+
+/* Logo */
+
+.nexo-logo {
+    display: inline-flex;
+
+    width: fit-content;
+
+    text-decoration: none;
+}
+
+.nexo-logo img {
+    width: 115px;
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+/* Intro */
+
+.intro-content {
+    max-width: 650px;
+}
+
+.eyebrow {
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+
+    color: var(--blue);
+
+    margin-bottom: 18px;
+}
+
+.intro-content h1 {
+    font-size: clamp(48px, 6vw, 78px);
+
+    line-height: 0.98;
+
+    letter-spacing: -3px;
+
+    color: var(--navy);
+
+    margin-bottom: 28px;
+}
+
+.intro-content h1 span {
+    color: var(--blue);
+}
+
+.intro-text {
+    max-width: 570px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: var(--muted);
+}
+
+
+/* Bottom navigation words */
+
+.intro-footer {
+    display: flex;
+
+    gap: 14px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #9aa3b5;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   AUTH CARD
+   ========================================================= */
+
+.auth-card {
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid rgba(225, 230, 240, 0.9);
+
+    border-radius: 28px;
+
+    padding: 42px;
+
+    box-shadow:
+        0 30px 80px rgba(20, 35, 70, 0.08),
+        0 8px 25px rgba(20, 35, 70, 0.04);
+
+    backdrop-filter: blur(12px);
+}
+
+
+/* =========================================================
+   AUTH CARD HEADER
+   ========================================================= */
+
+.card-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #eef2ff;
+
+    color: var(--blue);
+
+    font-size: 22px;
+}
+
+.card-header h2 {
+    font-size: 27px;
+
+    line-height: 1.2;
+
+    color: var(--navy);
+
+    margin-bottom: 6px;
+}
+
+.card-header p {
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+#signup-form,
+#login-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.input-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #343d50;
+}
+
+.input-group input {
+    width: 100%;
+
+    height: 52px;
+
+    padding: 0 16px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: #fbfcff;
+
+    color: var(--text);
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: all 0.2s ease;
+}
+
+.input-group input::placeholder {
+    color: #aab1bf;
+}
+
+.input-group input:focus {
+    background: #ffffff;
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 4px rgba(49, 87, 255, 0.08);
+}
+
+
+/* =========================================================
+   LOGIN / SIGNUP INPUTS
+   ========================================================= */
+
+.auth-container input {
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.auth-container input:focus {
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 4px rgba(49, 87, 255, 0.08);
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+#signup-form .signup-btn,
+#login-form .signup-btn {
+    width: 100%;
+
+    min-height: 56px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: var(--blue);
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+
+    box-shadow:
+        0 12px 25px rgba(49, 87, 255, 0.20);
+}
+
+#signup-form .signup-btn:hover,
+#login-form .signup-btn:hover {
+    background: var(--blue-dark);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 16px 30px rgba(49, 87, 255, 0.25);
+}
+
+.button-arrow {
+    font-size: 19px;
+}
+
+
+/* =========================================================
+   AUTH MESSAGES
+   ========================================================= */
+
+.auth-message {
+    min-height: 22px;
+
+    margin-top: 15px;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   AUTH FOOTER
+   ========================================================= */
+
+.auth-footer {
+    text-align: center;
+
+    margin-top: 24px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+.auth-footer a {
+    color: var(--blue);
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* Back link */
+
+.back-link {
+    display: block;
+
+    width: fit-content;
+
+    margin: 22px auto 0;
+
+    color: #8b94a6;
+
+    font-size: 13px;
+
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--blue);
+}
+
+
+/* =========================================================
+   LOGIN SOCIAL BUTTONS
+   ========================================================= */
+
+.divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 25px 0 18px;
+
+    color: #a0a8b8;
+
+    font-size: 13px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+
+    height: 1px;
+
+    flex: 1;
+
+    background: #e5e9f2;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .auth-layout {
+        grid-template-columns: 1fr;
+
+        max-width: 520px;
+
+        gap: 40px;
+    }
+
+    .auth-intro {
+        min-height: auto;
+
+        text-align: center;
+
+        align-items: center;
+
+        gap: 35px;
+    }
+
+    .intro-content {
+        max-width: 520px;
+    }
+
+    .intro-content h1 {
+        font-size: 55px;
+
+        letter-spacing: -2px;
+    }
+
+    .intro-text {
+        margin: auto;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .auth-page {
+        padding: 30px 18px;
+    }
+
+    .nexo-logo img {
+        width: 90px;
+    }
+
+    .intro-content h1 {
+        font-size: 42px;
+
+        line-height: 1;
+    }
+
+    .intro-text {
+        font-size: 16px;
+    }
+
+    .auth-card {
+        padding: 28px 22px;
+
+        border-radius: 22px;
+    }
+
+    .card-header h2 {
+        font-size: 23px;
+    }
+
+    .intro-footer {
+        font-size: 12px;
+    }
+}
+/* =========================================================
+   NEXO - LEVEL TEST
+   ========================================================= */
+
+.test-page {
+    min-height: 100vh;
+
+    position: relative;
+
+    padding: 70px 7% 45px;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(220, 225, 230, 0.28) 0 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(220, 225, 230, 0.25) 0 1px,
+            transparent 2px
+        ),
+        #fdfefe;
+
+    background-size: 24px 24px, 31px 31px;
+
+    color: #111827;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.test-topbar {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 95px;
+}
+
+
+/* Back arrow */
+
+.back-button {
+    border: none;
+
+    background: transparent;
+
+    font-size: 58px;
+
+    line-height: 1;
+
+    color: #6f7378;
+
+    cursor: pointer;
+
+    padding: 0;
+
+    transition: transform 0.2s ease;
+}
+
+.back-button:hover {
+    transform: translateX(-5px);
+}
+
+
+/* Three dots */
+
+.test-menu {
+    display: flex;
+
+    gap: 8px;
+
+    margin-right: 15px;
+}
+
+.test-menu span {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #707070;
+}
+
+
+/* =========================================================
+   TEST CONTAINER
+   ========================================================= */
+
+.test-container {
+    width: 100%;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.test-container h1 {
+    margin: 0 0 45px;
+
+    font-size: clamp(48px, 6vw, 68px);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    font-weight: 700;
+
+    color: #111827;
+}
+
+
+/* =========================================================
+   QUESTION NUMBER
+   ========================================================= */
+
+.question-number {
+    margin: 0 0 50px;
+
+    font-size: 38px;
+
+    font-weight: 400;
+
+    color: #111111;
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+   ========================================================= */
+
+.progress-container {
+    width: 100%;
+
+    height: 32px;
+
+    margin-bottom: 70px;
+
+    background: #d8f3e7;
+
+    border-radius: 0 0 32px 32px;
+
+    overflow: hidden;
+
+    box-shadow:
+        inset 0 -2px 0 rgba(0, 0, 0, 0.04);
+}
+
+.progress-bar {
+    height: 100%;
+
+    width: 5%;
+
+    background: linear-gradient(
+        90deg,
+        #24d58a,
+        #31c985
+    );
+
+    border-radius: 0 0 30px 0;
+
+    transition: width 0.35s ease;
+}
+
+
+/* =========================================================
+   QUESTION
+   ========================================================= */
+
+.test-container h2 {
+    margin: 0 0 55px;
+
+    max-width: 760px;
+
+    font-size: clamp(34px, 4.5vw, 54px);
+
+    line-height: 1.3;
+
+    letter-spacing: -1px;
+
+    font-weight: 700;
+
+    color: #050505;
+}
+
+
+/* =========================================================
+   ANSWERS
+   ========================================================= */
+
+.answers {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 34px;
+
+    width: 100%;
+}
+
+
+.answer-btn {
+    width: 100%;
+
+    min-height: 105px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 55px;
+
+    padding: 18px 45px;
+
+    border: 1.5px solid #171717;
+
+    border-radius: 22px;
+
+    background: #ffffff;
+
+    color: #111111;
+
+    font-size: 31px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 9px 0 #171717;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+
+/* Letter circle */
+
+.answer-letter {
+    width: 58px;
+
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid #9b9b9b;
+
+    border-radius: 50%;
+
+    font-size: 28px;
+
+    font-weight: 400;
+
+    background: #ffffff;
+}
+
+
+/* Answer text */
+
+.answer-text {
+    text-align: left;
+}
+
+
+/* Hover */
+
+.answer-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 11px 0 #171717;
+}
+
+
+/* Selected */
+
+.answer-btn.selected {
+    background: #eef2ff;
+
+    border-color: #3157ff;
+
+    box-shadow:
+        0 9px 0 #3157ff;
+}
+
+
+/* =========================================================
+   NEXT BUTTON
+   ========================================================= */
+
+.next-btn {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    min-width: 285px;
+
+    height: 95px;
+
+    margin: 80px 0 0 auto;
+
+    padding: 0 35px;
+
+    border: 2px solid #ffffff;
+
+    border-radius: 55px;
+
+    background: #526df5;
+
+    color: #ffffff;
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 35px rgba(82, 109, 245, 0.30);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.next-btn:hover {
+    transform: translateY(-3px);
+
+    background: #4561ec;
+}
+
+
+.next-btn:active {
+    transform: translateY(0);
+}
+
+
+.next-arrow {
+    font-size: 48px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .test-page {
+        padding: 40px 25px 35px;
+    }
+
+    .test-topbar {
+        margin-bottom: 60px;
+    }
+
+    .back-button {
+        font-size: 45px;
+    }
+
+    .test-container h1 {
+        font-size: 48px;
+
+        margin-bottom: 30px;
+    }
+
+    .question-number {
+        font-size: 28px;
+
+        margin-bottom: 40px;
+    }
+
+    .progress-container {
+        margin-bottom: 45px;
+    }
+
+    .test-container h2 {
+        font-size: 34px;
+
+        margin-bottom: 40px;
+    }
+
+    .answer-btn {
+        min-height: 85px;
+
+        padding: 15px 25px;
+
+        gap: 25px;
+
+        font-size: 25px;
+    }
+
+    .answer-letter {
+        width: 50px;
+
+        height: 50px;
+
+        font-size: 23px;
+    }
+
+    .next-btn {
+        min-width: 220px;
+
+        height: 75px;
+
+        margin-top: 60px;
+
+        font-size: 27px;
+    }
+
+    .next-arrow {
+        font-size: 38px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .test-page {
+        padding: 30px 18px 30px;
+    }
+
+    .test-topbar {
+        margin-bottom: 50px;
+    }
+
+    .test-container h1 {
+        font-size: 39px;
+    }
+
+    .question-number {
+        font-size: 23px;
+
+        margin-bottom: 30px;
+    }
+
+    .progress-container {
+        height: 23px;
+
+        margin-bottom: 40px;
+    }
+
+    .test-container h2 {
+        font-size: 27px;
+
+        line-height: 1.35;
+    }
+
+    .answers {
+        gap: 25px;
+    }
+
+    .answer-btn {
+        min-height: 72px;
+
+        border-radius: 17px;
+
+        padding: 12px 18px;
+
+        gap: 18px;
+
+        font-size: 21px;
+
+        box-shadow:
+            0 7px 0 #171717;
+    }
+
+    .answer-letter {
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 19px;
+    }
+
+    .next-btn {
+        width: 100%;
+
+        min-width: 0;
+
+        height: 68px;
+
+        margin-top: 50px;
+
+        font-size: 24px;
+    }
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.test-topbar {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 95px;
+}
+
+
+/* Back arrow */
+
+.back-button {
+    border: none;
+    background: transparent;
+
+    font-size: 58px;
+    line-height: 1;
+
+    color: #6f7378;
+
+    cursor: pointer;
+
+    padding: 0;
+
+    transition: transform 0.2s ease;
+}
+
+.back-button:hover {
+    transform: translateX(-5px);
+}
+
+
+/* Three dots */
+
+.test-menu {
+    display: flex;
+    gap: 8px;
+
+    margin-right: 15px;
+}
+
+.test-menu span {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #707070;
+}
+
+
+/* =========================================================
+   TEST CONTAINER
+   ========================================================= */
+
+.test-container {
+    width: 100%;
+    max-width: 760px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.test-container h1 {
+    margin: 0 0 45px;
+
+    font-size: clamp(48px, 6vw, 68px);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    font-weight: 700;
+
+    color: #111827;
+}
+
+
+/* =========================================================
+   QUESTION NUMBER
+   ========================================================= */
+
+.question-number {
+    margin: 0 0 82px;
+
+    font-size: 38px;
+
+    font-weight: 400;
+
+    color: #111111;
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+   ========================================================= */
+
+.progress-container {
+    width: 100%;
+    height: 32px;
+
+    margin-bottom: 82px;
+
+    background: #d8f3e7;
+
+    border-radius: 0 0 32px 32px;
+
+    overflow: hidden;
+
+    box-shadow:
+        inset 0 -2px 0 rgba(0, 0, 0, 0.04);
+}
+
+.progress-bar {
+    height: 100%;
+
+    width: 5%;
+
+    background: linear-gradient(
+        90deg,
+        #24d58a,
+        #31c985
+    );
+
+    border-radius: 0 0 30px 0;
+
+    transition: width 0.35s ease;
+}
+
+
+/* =========================================================
+   QUESTION
+   ========================================================= */
+
+.test-container h2 {
+    margin: 0 0 55px;
+
+    max-width: 760px;
+
+    font-size: clamp(34px, 4.5vw, 54px);
+
+    line-height: 1.45;
+
+    letter-spacing: -1px;
+
+    font-weight: 700;
+
+    color: #050505;
+}
+
+
+/* =========================================================
+   ANSWERS
+   ========================================================= */
+
+.answers {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 34px;
+
+    width: 100%;
+}
+
+
+.answer-btn {
+    width: 100%;
+
+    min-height: 105px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 55px;
+
+    padding: 18px 45px;
+
+    border: 1.5px solid #171717;
+
+    border-radius: 22px;
+
+    background: #ffffff;
+
+    color: #111111;
+
+    font-size: 31px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 9px 0 #171717;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+
+/* Letter circle */
+
+.answer-letter {
+    width: 58px;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #9b9b9b;
+
+    border-radius: 50%;
+
+    font-size: 28px;
+
+    font-weight: 400;
+
+    background: #ffffff;
+}
+
+
+/* Answer text */
+
+.answer-text {
+    text-align: left;
+}
+
+
+/* Hover */
+
+.answer-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 11px 0 #171717;
+}
+
+
+/* Selected */
+
+.answer-btn.selected {
+    background: #eef2ff;
+
+    border-color: #3157ff;
+
+    box-shadow:
+        0 9px 0 #3157ff;
+}
+
+
+/* =========================================================
+   NEXT BUTTON
+   ========================================================= */
+
+.next-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+
+    min-width: 285px;
+
+    height: 95px;
+
+    margin:
+
+        80px 0 0 auto;
+
+    padding: 0 35px;
+
+    border: 2px solid #ffffff;
+
+    border-radius: 55px;
+
+    background: #526df5;
+
+    color: #ffffff;
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 35px rgba(82, 109, 245, 0.30);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.next-btn:hover {
+    transform: translateY(-3px);
+
+    background: #4561ec;
+}
+
+
+.next-btn:active {
+    transform: translateY(0);
+}
+
+
+.next-arrow {
+    font-size: 48px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .test-page {
+        padding: 40px 25px 35px;
+    }
+
+    .test-topbar {
+        margin-bottom: 60px;
+    }
+
+    .back-button {
+        font-size: 45px;
+    }
+
+    .test-container h1 {
+        font-size: 48px;
+
+        margin-bottom: 30px;
+    }
+
+    .question-number {
+        font-size: 28px;
+
+        margin-bottom: 55px;
+    }
+
+    .progress-container {
+        margin-bottom: 55px;
+    }
+
+    .test-container h2 {
+        font-size: 34px;
+
+        margin-bottom: 40px;
+    }
+
+    .answer-btn {
+        min-height: 85px;
+
+        padding: 15px 25px;
+
+        gap: 25px;
+
+        font-size: 25px;
+    }
+
+    .answer-letter {
+        width: 50px;
+        height: 50px;
+
+        font-size: 23px;
+    }
+
+    .next-btn {
+        min-width: 220px;
+
+        height: 75px;
+
+        margin-top: 60px;
+
+        font-size: 27px;
+    }
+
+    .next-arrow {
+        font-size: 38px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .test-page {
+        padding: 30px 18px 30px;
+    }
+
+    .test-topbar {
+        margin-bottom: 50px;
+    }
+
+    .test-container h1 {
+        font-size: 39px;
+    }
+
+    .question-number {
+        font-size: 23px;
+
+        margin-bottom: 40px;
+    }
+
+    .progress-container {
+        height: 23px;
+
+        margin-bottom: 45px;
+    }
+
+    .test-container h2 {
+        font-size: 27px;
+
+        line-height: 1.35;
+    }
+
+    .answers {
+        gap: 25px;
+    }
+
+    .answer-btn {
+        min-height: 72px;
+
+        border-radius: 17px;
+
+        padding: 12px 18px;
+
+        gap: 18px;
+
+        font-size: 21px;
+
+        box-shadow:
+            0 7px 0 #171717;
+    }
+
+    .answer-letter {
+        width: 42px;
+        height: 42px;
+
+        font-size: 19px;
+    }
+
+    .next-btn {
+        width: 100%;
+
+        min-width: 0;
+
+        height: 68px;
+
+        margin-top: 50px;
+
+        font-size: 24px;
+    }}
+
+    /* =========================================================
+   NEXO - PERSONALIZED ROADMAP
+   ========================================================= */
+
+.roadmap-page {
+    min-height: 100vh;
+    padding: 40px 30px 60px;
+}
+
+.roadmap-topbar {
+    max-width: 760px;
+    margin: 0 auto 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.roadmap-container {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.roadmap-container h1 {
+    font-size: 58px;
+    line-height: 1.05;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 40px;
+}
+
+.roadmap-description {
+    font-size: 28px;
+    line-height: 1.4;
+    color: #111111;
+    margin-bottom: 30px;
+}
+
+.roadmap-level {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 30px;
+    background: #e8f8ef;
+    color: #159447;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 35px;
+}
+
+.roadmap {
+    position: relative;
+    margin-left: 35px;
+    padding-left: 50px;
+}
+
+
+/* Vertical line */
+
+.roadmap::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 20px;
+    bottom: 20px;
+    width: 3px;
+    border-left: 3px dotted #b7c1df;
+}
+
+
+/* Roadmap item */
+
+.roadmap-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+
+/* Number */
+
+.roadmap-number {
+    position: absolute;
+    left: -50px;
+    top: 20px;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #edf1ff;
+    color: #4f72ff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    z-index: 2;
+}
+
+
+/* First number */
+
+.roadmap-item:first-child .roadmap-number {
+    background: #2000c9;
+    color: white;
+    width: 48px;
+    height: 48px;
+    left: -55px;
+    top: 15px;
+}
+
+
+/* Card */
+
+.roadmap-card {
+    width: 100%;
+    min-height: 105px;
+
+    padding: 24px 28px;
+
+    border: 1px solid #e4e6ef;
+    border-radius: 22px;
+
+    background: white;
+
+    box-shadow:
+        0 8px 25px rgba(32, 0, 201, 0.05);
+}
+
+
+/* Card top */
+
+.roadmap-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+
+/* Title */
+
+.roadmap-card h3 {
+    margin: 0;
+
+    font-size: 23px;
+    font-weight: 700;
+
+    color: #111111;
+}
+
+
+/* Description */
+
+.roadmap-card p {
+    margin: 10px 0 0;
+
+    font-size: 17px;
+    color: #555555;
+}
+
+
+/* Badge */
+
+.roadmap-badge {
+    padding: 8px 16px;
+
+    border-radius: 20px;
+
+    background: #eaf1ff;
+    color: #4f72ff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* Follow button */
+
+.follow-roadmap-btn {
+    width: 100%;
+    height: 78px;
+
+    margin-top: 25px;
+
+    border: none;
+    border-radius: 45px;
+
+    background: #2000c9;
+    color: white;
+
+    font-size: 25px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 30px rgba(32, 0, 201, 0.20);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.follow-roadmap-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 16px 35px rgba(32, 0, 201, 0.25);
+}
+
+
+/* Choose myself */
+
+.choose-roadmap-btn {
+    width: 100%;
+    height: 78px;
+
+    margin-top: 25px;
+
+    border: 3px dotted #111111;
+    border-radius: 45px;
+
+    background: white;
+    color: #4f72ff;
+
+    font-size: 25px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease;
+}
+
+.choose-roadmap-btn:hover {
+    transform: translateY(-2px);
+    background: #f8f9ff;
+}
+
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    .roadmap-page {
+        padding: 30px 18px 45px;
+    }
+
+    .roadmap-topbar {
+        margin-bottom: 40px;
+    }
+
+    .roadmap-container h1 {
+        font-size: 42px;
+        line-height: 1.05;
+    }
+
+    .roadmap-description {
+        font-size: 22px;
+    }
+
+    .roadmap {
+        margin-left: 20px;
+        padding-left: 38px;
+    }
+
+    .roadmap-card {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .roadmap-card-top {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .roadmap-card h3 {
+        font-size: 20px;
+    }
+
+    .roadmap-card p {
+        font-size: 15px;
+    }
+
+    .roadmap-number {
+        left: -38px;
+    }
+
+    .roadmap-item:first-child .roadmap-number {
+        left: -43px;
+    }
+
+    .follow-roadmap-btn,
+    .choose-roadmap-btn {
+        height: 68px;
+        font-size: 21px;
+    }
+
+}
+
+/* =========================================================
+   NEXO - PERSONALIZED ROADMAP
+   ========================================================= */
+
+#roadmap {
+    width: 100%;
+    max-width: 720px;
+    margin: 35px auto 45px;
+    position: relative;
+}
+
+
+/* =========================================================
+   ROADMAP ITEM
+   ========================================================= */
+
+.roadmap-item {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    position: relative;
+    min-height: 125px;
+}
+
+
+/* =========================================================
+   LEFT TIMELINE
+   ========================================================= */
+
+.roadmap-line {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* vertical line */
+
+.roadmap-line::after {
+    content: "";
+    position: absolute;
+    top: 42px;
+    bottom: -10px;
+    left: 50%;
+    width: 2px;
+    background: #d9e3ff;
+    transform: translateX(-50%);
+}
+
+
+/* remove line from last item */
+
+.roadmap-item:last-child
+.roadmap-line::after {
+    display: none;
+}
+
+
+/* =========================================================
+   CIRCLE
+   ========================================================= */
+
+.roadmap-circle {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f1f5ff;
+
+    border: 2px solid #d9e3ff;
+
+    color: #7c96d8;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* current step */
+
+.roadmap-item.current
+.roadmap-circle {
+
+    background: #3157ff;
+
+    border-color: #3157ff;
+
+    color: white;
+
+    box-shadow:
+        0 0 0 8px rgba(49, 87, 255, 0.10);
+
+}
+
+
+/* completed step */
+
+.roadmap-item.completed
+.roadmap-circle {
+
+    background: #3157ff;
+
+    border-color: #3157ff;
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   ROADMAP CARD
+   ========================================================= */
+
+.roadmap-card {
+
+    min-height: 105px;
+
+    margin-left: 0;
+
+    margin-bottom: 20px;
+
+    padding: 22px 25px;
+
+    background: white;
+
+    border: 1px solid #edf0f7;
+
+    border-radius: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(30, 50, 100, 0.06);
+
+}
+
+
+/* current card */
+
+.roadmap-item.current
+.roadmap-card {
+
+    border-color: #e1e7ff;
+
+    box-shadow:
+        0 10px 30px rgba(49, 87, 255, 0.08);
+
+}
+
+
+/* =========================================================
+   NUMBER INSIDE CARD
+   ========================================================= */
+
+.roadmap-card-number {
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    border: 2px solid #dce5ff;
+
+    color: #3157ff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    font-size: 15px;
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.roadmap-card-info {
+    flex: 1;
+}
+
+
+.roadmap-title-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+}
+
+
+.roadmap-card h3 {
+
+    margin: 0;
+
+    color: #172033;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+}
+
+
+.roadmap-card p {
+
+    margin: 8px 0 0;
+
+    color: #7b8497;
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   LEVEL BADGE
+   ========================================================= */
+
+.roadmap-badge {
+
+    padding: 7px 14px;
+
+    border-radius: 30px;
+
+    background: #e6f7ed;
+
+    color: #27a65a;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+}
+
+
+/* intermediate badge */
+
+.roadmap-item:nth-child(2)
+.roadmap-badge {
+
+    background: #edf3ff;
+
+    color: #4f72ff;
+
+}
+
+
+/* advanced badge */
+
+.roadmap-item:nth-child(3)
+.roadmap-badge,
+
+.roadmap-item:nth-child(4)
+.roadmap-badge {
+
+    background: #eaf0ff;
+
+    color: #3157ff;
+
+}
+
+
+/* =========================================================
+   LOCKED STEPS
+   ========================================================= */
+
+.roadmap-item.locked
+.roadmap-card {
+
+    opacity: 0.95;
+
+}
+
+
+.roadmap-item.locked
+.roadmap-circle {
+
+    background: #f5f7fc;
+
+    color: #9aabd2;
+
+    border-color: #dfe6f5;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    #roadmap {
+        margin-top: 25px;
+    }
+
+
+    .roadmap-item {
+        grid-template-columns: 52px 1fr;
+    }
+
+
+    .roadmap-circle {
+        width: 36px;
+        height: 36px;
+
+        font-size: 14px;
+    }
+
+
+    .roadmap-card {
+
+        padding: 18px;
+
+        border-radius: 18px;
+
+        gap: 12px;
+
+    }
+
+
+    .roadmap-card-number {
+
+        width: 32px;
+        height: 32px;
+
+        font-size: 13px;
+
+    }
+
+
+    .roadmap-card h3 {
+
+        font-size: 17px;
+
+    }
+
+
+    .roadmap-card p {
+
+        font-size: 14px;
+
+    }
+
+
+    .roadmap-title-row {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 7px;
+
+    }
+
+
+    .roadmap-badge {
+
+        font-size: 11px;
+
+        padding: 5px 10px;
+
+    }
+
+}
+
+
+
+
+css
+/* =========================================================
+   NEXO - PLAYLIST PAGE
+   ========================================================= */
+
+.playlist-page {
+    min-height: 100vh;
+    padding: 45px 7%;
+    background:
+        radial-gradient(circle at 85% 10%, rgba(49, 87, 255, 0.08), transparent 30%),
+        #ffffff;
+}
+
+
+/* Top bar */
+
+.playlist-topbar {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 80px;
+}
+
+
+.back-button {
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 50%;
+    background: #f3f5f9;
+    color: #111827;
+    font-size: 26px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+.back-button:hover {
+    transform: translateX(-3px);
+}
+
+
+.playlist-title span {
+    color: #3157ff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+
+.playlist-title h1 {
+    margin-top: 5px;
+    font-size: 24px;
+    color: #111827;
+}
+
+
+/* Introduction */
+
+.playlist-intro {
+    max-width: 760px;
+    margin-bottom: 55px;
+}
+
+
+.playlist-label {
+    margin-bottom: 15px;
+    color: #3157ff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+
+.playlist-intro h2 {
+    margin-bottom: 20px;
+    color: #111827;
+    font-size: 48px;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+}
+
+
+.playlist-description {
+    max-width: 600px;
+    color: #7b8497;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* Playlist */
+
+.playlist-container {
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+/* Lesson card */
+
+.lesson-card {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+
+    padding: 22px;
+
+    border: 1px solid #edf0f5;
+    border-radius: 22px;
+
+    background: #ffffff;
+
+    box-shadow: 0 8px 30px rgba(17, 24, 39, 0.04);
+
+    transition: 0.25s;
+}
+
+
+.lesson-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(17, 24, 39, 0.08);
+}
+
+
+/* Number */
+
+.lesson-number {
+    min-width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: #f0f3ff;
+    color: #3157ff;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+/* Information */
+
+.lesson-info {
+    flex: 1;
+}
+
+
+.lesson-top {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+
+.lesson-type {
+    color: #18a66a;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+.lesson-duration {
+    color: #9aa2b1;
+    font-size: 12px;
+}
+
+
+.lesson-info h3 {
+    margin-bottom: 5px;
+    color: #172033;
+    font-size: 19px;
+}
+
+
+.lesson-info p {
+    color: #7b8497;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* Lesson button */
+
+.lesson-button {
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #3157ff;
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.lesson-button:hover {
+    background: #2446dc;
+    transform: translateX(3px);
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .playlist-page {
+        padding: 30px 18px;
+    }
+
+
+    .playlist-topbar {
+        margin-bottom: 55px;
+    }
+
+
+    .playlist-intro h2 {
+        font-size: 36px;
+    }
+
+
+    .lesson-card {
+        padding: 17px;
+        gap: 14px;
+    }
+
+
+    .lesson-number {
+        min-width: 45px;
+        height: 45px;
+        border-radius: 13px;
+    }
+
+
+    .lesson-info h3 {
+        font-size: 16px;
+    }
+
+
+    .lesson-info p {
+        font-size: 13px;
+    }
+
+
+    .lesson-button {
+        width: 42px;
+        height: 42px;
+    }
+}

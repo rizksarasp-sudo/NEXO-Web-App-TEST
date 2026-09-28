@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXO - Sign Up</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <!-- Background decorative elements -->
+        <div class="auth-glow auth-glow-one"></div>
+        <div class="auth-glow auth-glow-two"></div>
+
+        <div class="auth-layout">
+
+            <!-- Left side -->
+            <section class="auth-intro">
+
+                <a href="index.html" class="nexo-logo">
+                    <img src="https://i.pinimg.com/736x/81/67/e2/8167e2d11512371eca276f916a257ce0.jpg" alt="NEXO">
+                </a>
+
+                <div class="intro-content">
+
+                    <p class="eyebrow">
+                        START YOUR JOURNEY
+                    </p>
+
+                    <h1>
+                        Build your future.<br>
+                        <span>One skill at a time.</span>
+                    </h1>
+
+                    <p class="intro-text">
+                        Join NEXO and turn what you learn into
+                        real skills, real projects and real opportunities.
+                    </p>
+
+                </div>
+
+                <div class="intro-footer">
+                    <span>Learn</span>
+                    <span>•</span>
+                    <span>Build</span>
+                    <span>•</span>
+                    <span>Grow</span>
+                </div>
+
+            </section>
+
+
+            <!-- Signup card -->
+            <section class="auth-card">
+
+                <div class="card-header">
+
+                    <div class="card-icon">
+                        ✦
+                    </div>
+
+                    <div>
+                        <h2>Create your account</h2>
+
+                        <p>
+                            Start your learning journey with NEXO.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form id="signup-form">
+
+                    <!-- Name -->
+
+                    <div class="input-group">
+
+                        <label for="name">
+                            Full name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Email -->
+
+                    <div class="input-group">
+
+                        <label for="email">
+                            Email address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Password -->
+
+                    <div class="input-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Create a strong password"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Submit -->
+
+                    <button
+                        type="submit"
+                        class="btn signup-btn"
+                    >
+                        <span>Create account</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+
+                </form>
+
+
+                <!-- Supabase message -->
+
+                <p id="signup-message" class="auth-message"></p>
+
+
+                <!-- Login -->
+
+                <p class="auth-footer">
+
+                    Already have an account?
+
+                    <a href="login.html">
+                        Log in
+                    </a>
+
+                </p>
+
+
+                <!-- Back -->
+
+                <a href="index.html" class="back-link">
+                    ← Back to NEXO
+                </a>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- Supabase -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- NEXO JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

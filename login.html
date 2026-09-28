@@ -1,0 +1,97 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXO - Log In</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <div class="auth-container">
+
+            <h1>Welcome back</h1>
+
+            <p class="auth-subtitle">
+                Log in to continue your NEXO journey.
+            </p>
+
+            <form id="login-form">
+
+                <label for="login-email">Email</label>
+
+                <input
+                    type="email"
+                    id="login-email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label for="login-password">Password</label>
+
+                <input
+                    type="password"
+                    id="login-password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <button type="submit" class="btn signup-btn">
+                    Log in
+                </button>
+
+            </form>
+
+            <p id="login-message"></p>
+
+            <div class="divider">
+                <span>Or continue with</span>
+            </div>
+
+            <div class="social-buttons">
+
+                <button
+                    type="button"
+                    class="social-btn"
+                    id="google-login"
+                >
+                    Google
+                </button>
+
+                <button
+                    type="button"
+                    class="social-btn"
+                    id="github-login"
+                >
+                    GitHub
+                </button>
+
+            </div>
+
+            <p class="auth-footer">
+                Don't have an account?
+                <a href="signup.html">Sign up</a>
+            </p>
+
+            <p class="auth-footer">
+                <a href="index.html">← Back to NEXO</a>
+            </p>
+
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+```

@@ -1,0 +1,243 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXO — Choose Your Role</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .role-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 20px;
+            background: #fff;
+            font-family: inherit;
+            overflow: hidden;
+        }
+
+        .role-container {
+            width: 100%;
+            max-width: 430px;
+            text-align: center;
+            animation: roleAppear .7s ease both;
+        }
+
+        .role-logo {
+            width: 52px;
+            height: 52px;
+            margin: 0 auto 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3157ff;
+            font-size: 38px;
+            font-weight: 800;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .role-container h1 {
+            color: #111827;
+            font-size: clamp(27px, 6vw, 34px);
+            letter-spacing: -1px;
+            margin: 0 0 12px;
+        }
+
+        .role-subtitle {
+            color: #7b8497;
+            font-size: 15px;
+            line-height: 1.7;
+            margin: 0 auto 34px;
+            max-width: 320px;
+        }
+
+        .role-options {
+            display: grid;
+            gap: 16px;
+            text-align: left;
+        }
+
+        .role-card {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #e8ebf2;
+            border-radius: 20px;
+            cursor: pointer;
+            text-align: left;
+            color: #111827;
+            transition: transform .25s ease,
+                        border-color .25s ease,
+                        box-shadow .25s ease;
+        }
+
+        .role-card:hover {
+            transform: translateY(-4px);
+            border-color: #3157ff;
+            box-shadow: 0 12px 32px rgba(49, 87, 255, .10);
+        }
+
+        .role-card:active {
+            transform: scale(.98);
+        }
+
+        .role-icon {
+            flex-shrink: 0;
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            font-size: 25px;
+        }
+
+        .student-icon {
+            color: #3157ff;
+            background: #eef2ff;
+        }
+
+        .teacher-icon {
+            color: #009966;
+            background: #e9faf2;
+        }
+
+        .role-info {
+            flex: 1;
+        }
+
+        .role-info h2 {
+            font-size: 17px;
+            margin: 0 0 6px;
+            font-weight: 700;
+        }
+
+        .role-info p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #7b8497;
+            margin: 0;
+        }
+
+        .role-arrow {
+            color: #9aa3b4;
+            font-size: 23px;
+            transition: transform .25s ease;
+        }
+
+        .role-card:hover .role-arrow {
+            color: #3157ff;
+            transform: translateX(4px);
+        }
+
+        .role-footer {
+            margin-top: 30px;
+            color: #9aa3b4;
+            font-size: 12px;
+        }
+
+        .role-back {
+            display: inline-block;
+            margin-top: 22px;
+            color: #3157ff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .role-back:hover {
+            opacity: .7;
+        }
+
+        @keyframes roleAppear {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @media (max-width: 380px) {
+            .role-card { padding: 15px; gap: 12px; }
+            .role-icon { width: 46px; height: 46px; }
+            .role-info h2 { font-size: 16px; }
+            .role-info p { font-size: 12px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .role-container, .role-logo { animation: none; }
+            .role-card, .role-arrow { transition: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="role-page">
+        <section class="role-container">
+
+            <div class="role-logo" aria-label="NEXO logo">X</div>
+
+            <h1>Choose your path.</h1>
+
+            <p class="role-subtitle">
+                Are you a student or a teacher?
+                Let's personalize your NEXO experience.
+            </p>
+
+            <div class="role-options">
+
+                <button class="role-card" type="button"
+                        onclick="chooseRole('student')">
+                    <span class="role-icon student-icon">🎓</span>
+
+                    <span class="role-info">
+                        <h2>I'm a Student</h2>
+                        <p>Discover your level and get a personalized learning path.</p>
+                    </span>
+
+                    <span class="role-arrow" aria-hidden="true">→</span>
+                </button>
+
+                <button class="role-card" type="button"
+                        onclick="chooseRole('teacher')">
+                    <span class="role-icon teacher-icon">👨‍🏫</span>
+
+                    <span class="role-info">
+                        <h2>I'm a Teacher</h2>
+                        <p>Share your programming courses with NEXO learners.</p>
+                    </span>
+
+                    <span class="role-arrow" aria-hidden="true">→</span>
+                </button>
+
+            </div>
+
+            <a href="login.html" class="role-back">
+                Already have an account? Log in
+            </a>
+
+            <p class="role-footer">Your journey. Your future. NEXO.</p>
+
+        </section>
+    </main>
+
+    <script>
+        function chooseRole(role) {
+            if (role === "student") {
+                window.location.href = "./level-test.html";
+            } else if (role === "teacher") {
+                window.location.href = "./teacher-form.html";
+            }
+        }
+    </script>
+</body>
+</html>
+```

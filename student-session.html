@@ -1,0 +1,393 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXO — Kickstart Session</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .session-page {
+            min-height: 100vh;
+            padding: 30px 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            font-family: inherit;
+        }
+
+        .session-container {
+            width: 100%;
+            max-width: 470px;
+            animation: sessionAppear .6s ease both;
+        }
+
+        .session-logo {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: #3157ff;
+            font-size: 38px;
+            font-weight: 800;
+            animation: sessionFloat 3s ease-in-out infinite;
+        }
+
+        .session-heading {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .session-tag {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 20px;
+            background: #eef2ff;
+            color: #3157ff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            margin-bottom: 14px;
+        }
+
+        .session-heading h1 {
+            margin: 0 0 12px;
+            color: #111827;
+            font-size: clamp(27px, 6vw, 33px);
+            letter-spacing: -1px;
+        }
+
+        .session-heading p {
+            max-width: 370px;
+            margin: 0 auto;
+            color: #7b8497;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .session-benefits {
+            display: grid;
+            gap: 12px;
+            padding: 18px;
+            margin-bottom: 25px;
+            border: 1px solid #e8ebf2;
+            border-radius: 18px;
+            background: #fff;
+        }
+
+        .session-benefit {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            color: #374151;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .session-check {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 25px;
+            height: 25px;
+            border-radius: 8px;
+            background: #eef2ff;
+            color: #3157ff;
+            font-size: 13px;
+        }
+
+        .session-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .session-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .session-field label {
+            color: #172033;
+            font-size: 13px;
+            font-weight: 650;
+        }
+
+        .session-field input,
+        .session-field select,
+        .session-field textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px;
+            border: 1px solid #e3e7ef;
+            border-radius: 12px;
+            background: #fff;
+            color: #172033;
+            font: inherit;
+            font-size: 14px;
+            outline: none;
+            transition: border-color .2s ease,
+                        box-shadow .2s ease;
+        }
+
+        .session-field textarea {
+            min-height: 85px;
+            resize: vertical;
+        }
+
+        .session-field input:focus,
+        .session-field select:focus,
+        .session-field textarea:focus {
+            border-color: #3157ff;
+            box-shadow: 0 0 0 3px rgba(49, 87, 255, .09);
+        }
+
+        .session-hint {
+            color: #8992a4;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .session-duration-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 9px;
+        }
+
+        .duration-option {
+            position: relative;
+        }
+
+        .duration-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .duration-option span {
+            display: block;
+            padding: 13px 5px;
+            border: 1px solid #e3e7ef;
+            border-radius: 12px;
+            color: #4b5563;
+            text-align: center;
+            font-size: 13px;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .duration-option input:checked + span {
+            border-color: #3157ff;
+            color: #3157ff;
+            background: #eef2ff;
+            font-weight: 700;
+        }
+
+        .duration-option input:focus-visible + span {
+            outline: 2px solid #3157ff;
+            outline-offset: 3px;
+        }
+
+        .session-submit {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 13px;
+            background: #3157ff;
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform .2s ease,
+                        box-shadow .2s ease;
+        }
+
+        .session-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(49, 87, 255, .2);
+        }
+
+        .session-submit:active {
+            transform: scale(.98);
+        }
+
+        .session-message {
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        .session-back {
+            display: block;
+            margin-top: 22px;
+            text-align: center;
+            text-decoration: none;
+            color: #7b8497;
+            font-size: 13px;
+        }
+
+        .session-back:hover {
+            color: #3157ff;
+        }
+
+        @keyframes sessionAppear {
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes sessionFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @media (max-width: 380px) {
+            .session-page { padding: 24px 14px; }
+            .session-benefits { padding: 14px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .session-container,
+            .session-logo { animation: none; }
+
+            .session-submit,
+            .session-field input,
+            .session-field select,
+            .session-field textarea { transition: none; }
+        }
+    </style>
+</head>
+
+<body>
+<main class="session-page">
+    <section class="session-container">
+
+        <div class="session-logo" aria-label="NEXO logo">X</div>
+
+        <header class="session-heading">
+            <span class="session-tag">YOUR NEXT STEP</span>
+            <h1>Let's kickstart your journey.</h1>
+            <p>
+                Meet our team, understand your test results,
+                discover how NEXO works, and get answers to your questions.
+            </p>
+        </header>
+
+        <div class="session-benefits">
+            <div class="session-benefit">
+                <span class="session-check">✓</span>
+                Understand your programming level and results
+            </div>
+            <div class="session-benefit">
+                <span class="session-check">✓</span>
+                Learn how to find the right courses on NEXO
+            </div>
+            <div class="session-benefit">
+                <span class="session-check">✓</span>
+                Ask questions and get personalized guidance
+            </div>
+        </div>
+
+        <form id="student-session-form" class="session-form">
+
+            <div class="session-field">
+                <label for="session-date">Preferred date *</label>
+                <input
+                    type="date"
+                    id="session-date"
+                    name="preferred_date"
+                    required
+                >
+            </div>
+
+            <div class="session-field">
+                <label for="session-time">Preferred time *</label>
+                <select id="session-time" name="preferred_time" required>
+                    <option value="">Choose a time range</option>
+                    <option value="09:00">09:00 AM</option>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="11:00">11:00 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <option value="13:00">01:00 PM</option>
+                    <option value="14:00">02:00 PM</option>
+                    <option value="15:00">03:00 PM</option>
+                    <option value="16:00">04:00 PM</option>
+                    <option value="17:00">05:00 PM</option>
+                </select>
+                <span class="session-hint">
+                    This is your preferred time, not a confirmed appointment.
+                </span>
+            </div>
+
+            <div class="session-field">
+                <label>Preferred duration *</label>
+
+                <div class="session-duration-options">
+                    <label class="duration-option">
+                        <input type="radio" name="duration" value="15" checked>
+                        <span>15 min</span>
+                    </label>
+
+                    <label class="duration-option">
+                        <input type="radio" name="duration" value="30">
+                        <span>30 min</span>
+                    </label>
+
+                    <label class="duration-option">
+                        <input type="radio" name="duration" value="45">
+                        <span>45 min</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="session-field">
+                <label for="session-questions">
+                    What would you like to discuss? (optional)
+                </label>
+                <textarea
+                    id="session-questions"
+                    name="questions"
+                    placeholder="Your questions, goals, or anything you'd like us to know..."
+                ></textarea>
+            </div>
+
+            <button type="submit" class="session-submit">
+                Request my Kickstart Session →
+            </button>
+
+            <p id="student-session-message"
+               class="session-message"
+               role="status"
+               aria-live="polite"></p>
+
+        </form>
+
+        <a href="level-test.html" class="session-back">
+            ← Back to your level test
+        </a>
+
+    </section>
+</main>
+
+<script>
+    const sessionDateInput = document.getElementById("session-date");
+
+    const localToday = new Date();
+    const year = localToday.getFullYear();
+    const month = String(localToday.getMonth() + 1).padStart(2, "0");
+    const day = String(localToday.getDate()).padStart(2, "0");
+
+    sessionDateInput.min = `${year}-${month}-${day}`;
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+</body>
+</html>
+```

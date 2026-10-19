@@ -6,89 +6,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="theme-color" content="#f8faff">
+
     <title>NEXO - Log In</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="nexo-auth-body">
 
-    <main class="auth-page">
+    <main class="auth-page nexo-auth-page">
 
-        <div class="auth-container">
+        <!-- Ambient background -->
+        <div class="auth-glow auth-glow-one"></div>
+        <div class="auth-glow auth-glow-two"></div>
+        <div class="auth-glow auth-glow-three"></div>
 
-            <h1>Welcome back</h1>
+        <!-- Mobile app login card -->
+        <section class="auth-card nexo-auth-card">
 
-            <p class="auth-subtitle">
-                Log in to continue your NEXO journey.
-            </p>
-
-            <form id="login-form">
-
-                <label for="login-email">Email</label>
-
-                <input
-                    type="email"
-                    id="login-email"
-                    placeholder="Enter your email"
-                    required
+            <!-- Brand -->
+            <a href="index.html" class="nexo-brand">
+                <img
+                    src="lhttps://placehold.co/200x200/3157ff/ffffff.png?text=X"
+                    alt="NEXO logo"
+                    class="nexo-brand-logo"
                 >
+                <span>NEXO</span>
+            </a>
 
-                <label for="login-password">Password</label>
+            <!-- Heading -->
+            <header class="nexo-auth-heading">
+                <h1>Welcome back</h1>
+                <p>Continue where you left off.</p>
+            </header>
 
-                <input
-                    type="password"
-                    id="login-password"
-                    placeholder="Enter your password"
-                    required
+            <!-- Login form -->
+            <form id="login-form" class="nexo-auth-form">
+
+                <div class="input-group nexo-input-group">
+                    <label for="login-email">Email address</label>
+
+                    <input
+                        type="email"
+                        id="login-email"
+                        name="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="input-group nexo-input-group">
+                    <label for="login-password">Password</label>
+
+                    <input
+                        type="password"
+                        id="login-password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn signup-btn nexo-primary-btn"
                 >
-
-                <button type="submit" class="btn signup-btn">
-                    Log in
+                    <span>Log in</span>
+                    <span class="button-arrow" aria-hidden="true">→</span>
                 </button>
 
             </form>
 
-            <p id="login-message"></p>
+            <!-- Supabase feedback -->
+            <p
+                id="login-message"
+                class="auth-message"
+                role="status"
+                aria-live="polite"
+            ></p>
 
-            <div class="divider">
+            <!-- Social login -->
+            <div class="nexo-social-divider">
                 <span>Or continue with</span>
             </div>
 
-            <div class="social-buttons">
+            <div class="social-buttons nexo-social-buttons">
 
                 <button
                     type="button"
-                    class="social-btn"
+                    class="social-btn nexo-social-btn"
                     id="google-login"
                 >
+                    <span class="social-letter" aria-hidden="true">G</span>
                     Google
                 </button>
 
                 <button
                     type="button"
-                    class="social-btn"
+                    class="social-btn nexo-social-btn"
                     id="github-login"
                 >
+                    <span class="social-letter" aria-hidden="true">⌘</span>
                     GitHub
                 </button>
 
             </div>
 
-            <p class="auth-footer">
-                Don't have an account?
-                <a href="signup.html">Sign up</a>
+            <!-- Signup link -->
+            <p class="auth-footer nexo-auth-footer">
+                New to NEXO?
+                <a href="signup.html">Create account</a>
             </p>
 
-            <p class="auth-footer">
-                <a href="index.html">← Back to NEXO</a>
-            </p>
+        </section>
 
-        </div>
+        <p class="nexo-auth-caption">
+            Learn <span>·</span> Build <span>·</span> Grow
+        </p>
 
     </main>
 
+    <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Existing NEXO JavaScript -->
     <script src="script.js"></script>
 
 </body>

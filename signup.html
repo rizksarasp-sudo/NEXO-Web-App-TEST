@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,188 +6,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NEXO - Sign Up</title>
+    <meta name="theme-color" content="#f8faff">
+
+    <title>NEXO - Create Account</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="nexo-auth-body">
 
-    <main class="auth-page">
+    <main class="auth-page nexo-auth-page">
 
-        <!-- Background decorative elements -->
+        <!-- Ambient background -->
         <div class="auth-glow auth-glow-one"></div>
         <div class="auth-glow auth-glow-two"></div>
+        <div class="auth-glow auth-glow-three"></div>
 
-        <div class="auth-layout">
+        <!-- Mobile app layout -->
+        <section class="auth-card nexo-auth-card">
 
-            <!-- Left side -->
-            <section class="auth-intro">
+            <!-- Brand -->
+            <a href="index.html" class="nexo-brand">
+                <img
+                    src="c:\Users\U\Downloads\logo.gif"
+                    alt="NEXO logo"
+                    class="nexo-brand-logo"
+                >
+                <span>NEXO</span>
+            </a>
 
-                <a href="index.html" class="nexo-logo">
-                    <img src="https://i.pinimg.com/736x/81/67/e2/8167e2d11512371eca276f916a257ce0.jpg" alt="NEXO">
-                </a>
+            <!-- Heading -->
+            <header class="nexo-auth-heading">
+                <h1>Create account</h1>
+                <p>Start your learning journey.</p>
+            </header>
 
-                <div class="intro-content">
+            <!-- Signup form -->
+            <form id="signup-form" class="nexo-auth-form">
 
-                    <p class="eyebrow">
-                        START YOUR JOURNEY
-                    </p>
+                <div class="input-group nexo-input-group">
+                    <label for="name">Full name</label>
 
-                    <h1>
-                        Build your future.<br>
-                        <span>One skill at a time.</span>
-                    </h1>
-
-                    <p class="intro-text">
-                        Join NEXO and turn what you learn into
-                        real skills, real projects and real opportunities.
-                    </p>
-
-                </div>
-
-                <div class="intro-footer">
-                    <span>Learn</span>
-                    <span>•</span>
-                    <span>Build</span>
-                    <span>•</span>
-                    <span>Grow</span>
-                </div>
-
-            </section>
-
-
-            <!-- Signup card -->
-            <section class="auth-card">
-
-                <div class="card-header">
-
-                    <div class="card-icon">
-                        ✦
-                    </div>
-
-                    <div>
-                        <h2>Create your account</h2>
-
-                        <p>
-                            Start your learning journey with NEXO.
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <form id="signup-form">
-
-                    <!-- Name -->
-
-                    <div class="input-group">
-
-                        <label for="name">
-                            Full name
-                        </label>
-
-                        <input
-                            type="text"
-                            id="name"
-                            placeholder="Enter your full name"
-                            autocomplete="name"
-                            required
-                        >
-
-                    </div>
-
-
-                    <!-- Email -->
-
-                    <div class="input-group">
-
-                        <label for="email">
-                            Email address
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="you@example.com"
-                            autocomplete="email"
-                            required
-                        >
-
-                    </div>
-
-
-                    <!-- Password -->
-
-                    <div class="input-group">
-
-                        <label for="password">
-                            Password
-                        </label>
-
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="Create a strong password"
-                            autocomplete="new-password"
-                            required
-                        >
-
-                    </div>
-
-
-                    <!-- Submit -->
-
-                    <button
-                        type="submit"
-                        class="btn signup-btn"
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Your name"
+                        autocomplete="name"
+                        required
                     >
-                        <span>Create account</span>
-                        <span class="button-arrow">→</span>
-                    </button>
+                </div>
 
-                </form>
+                <div class="input-group nexo-input-group">
+                    <label for="email">Email address</label>
 
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
 
-                <!-- Supabase message -->
+                <div class="input-group nexo-input-group">
+                    <label for="password">Password</label>
 
-                <p id="signup-message" class="auth-message"></p>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
 
+                <button
+                    type="submit"
+                    class="btn signup-btn nexo-primary-btn"
+                >
+                    <span>Create account</span>
+                    <span class="button-arrow" aria-hidden="true">→</span>
+                </button>
 
-                <!-- Login -->
+            </form>
 
-                <p class="auth-footer">
+            <!-- Supabase feedback -->
+            <p
+                id="signup-message"
+                class="auth-message"
+                role="status"
+                aria-live="polite"
+            ></p>
 
-                    Already have an account?
+            <!-- Login link -->
+            <p class="auth-footer nexo-auth-footer">
+                Already have an account?
+                <a href="login.html">Log in</a>
+            </p>
 
-                    <a href="login.html">
-                        Log in
-                    </a>
+        </section>
 
-                </p>
-
-
-                <!-- Back -->
-
-                <a href="index.html" class="back-link">
-                    ← Back to NEXO
-                </a>
-
-            </section>
-
-        </div>
+        <p class="nexo-auth-caption">
+            Learn <span>·</span> Build <span>·</span> Grow
+        </p>
 
     </main>
 
-
     <!-- Supabase -->
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- NEXO JavaScript -->
-
+    <!-- Existing NEXO authentication logic -->
     <script src="script.js"></script>
 
 </body>
-
 </html>
+```

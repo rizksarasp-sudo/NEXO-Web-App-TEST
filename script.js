@@ -66,9 +66,10 @@ if (signupForm) {
             message.textContent =
                 "✅ Account created successfully!";
 
-            // Go to level test
+            // Go to role selection
+
             setTimeout(function () {
-                window.location.href = "level-test.html";
+                window.location.href = "role-selection.html";
             }, 1000);
 
         } catch (error) {
@@ -123,7 +124,7 @@ if (loginForm) {
         message.textContent = "✅ Login successful!";
 
         setTimeout(function () {
-            window.location.href = "level-test.html";
+            window.location.href = "role-selection.html";
         }, 1000);
     });
 }
@@ -358,7 +359,7 @@ function loadQuestion() {
 
     selectedAnswer = null;
 
-
+    
     // Remove old answers
 
     answersContainer.innerHTML = "";
@@ -506,7 +507,7 @@ function finishTest() {
     // For now, return to home.
     // Later we'll create the Personalized Roadmap page.
 
-    window.location.href = "roadmap.html";
+    window.location.href = "student-session.html";
 
 }
 
@@ -532,4 +533,202 @@ if (
 
     loadQuestion();
 
+}
+
+
+/* =========================================
+   NEXO — TEACHER PROFILE FORM
+========================================= */
+
+const teacherForm = document.getElementById("teacher-form");
+
+if (teacherForm) {
+    teacherForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const message = document.getElementById("teacher-message");
+        const submitButton = teacherForm.querySelector(
+            'button[type="submit"]'
+        );
+
+        if (!supabaseClient) {
+            message.textContent = "Supabase is not connected.";
+            return;
+        }
+
+        submitButton.disabled = true;
+        message.textContent = "Saving your profile...";
+
+        try {
+            const { data: userData, error: userError } =
+                await supabaseClient.auth.getUser();
+
+            if (userError || !userData.user) {
+                message.textContent =
+                    "Please log in before submitting your profile.";
+
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 1500);
+
+                return;
+            }
+
+            const user = userData.user;
+
+            const profile = {
+                id: user.id,
+                full_name: document
+                    .getElementById("teacher-name").value.trim(),
+                professional_email: document
+                    .getElementById("teacher-email").value.trim(),
+                professional_title: document
+                    .getElementById("teacher-title").value.trim(),
+                teaching_experience: document
+                    .getElementById("teacher-experience").value,
+                specialty: document
+                    .getElementById("teacher-specialty").value,
+                bio: document
+                    .getElementById("teacher-bio").value.trim(),
+                course_idea: document
+                    .getElementById("teacher-course").value.trim() || null,
+                portfolio_url: document
+                    .getElementById("teacher-link").value.trim() || null
+            };
+
+            const { error } = await supabaseClient
+                .from("teacher_profiles")
+                .upsert(profile, { onConflict: "id" });
+
+            if (error) {
+                throw error;
+            }
+
+            message.textContent =
+                "Your teacher profile has been saved successfully!";
+
+            message.style.color = "#009966";
+
+        } catch (error) {
+            console.error("Teacher profile error:", error);
+
+            message.textContent =
+                "Could not save your profile: " + error.message;
+
+            message.style.color = "#dc2626";
+
+        } finally {
+            submitButton.disabled = false;
+        }
+    });
+}
+
+
+/* =========================================
+   NEXO — STUDENT SESSION BOOKING
+========================================= */
+
+const studentSessionForm =
+    document.getElementById("student-session-form");
+
+if (studentSessionForm) {
+    studentSessionForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const message =
+            document.getElementById("student-session-message");
+
+        const submitButton =
+            studentSessionForm.querySelector('button[type="submit"]');
+
+        if (!supabaseClient) {
+            message.textContent = "Supabase is not connected.";
+            return;
+        }
+
+        submitButton.disabled = true;
+        message.style.color = "#7b8497";
+        message.textContent = "Submitting your booking request...";
+
+        try {
+            const { data: authData, error: authError } =
+                await supabaseClient.auth.getUser();
+
+            if (authError || !authData.user) {
+                message.textContent =
+                    "Please log in before requesting a session.";
+
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 1500);
+
+                return;
+            }
+
+            const user = authData.user;
+
+            const preferredDate =
+                document.getElementById("session-date").value;
+
+            const preferredTime =
+                document.getElementById("session-time").value;
+
+            const duration = Number(
+                studentSessionForm.querySelector(
+                    'input[name="duration"]:checked'
+                ).value
+            );
+
+            if (duration < 15) {
+                throw new Error("The session must be at least 15 minutes.");
+            }
+
+            const today = new Date();
+            const todayString = [
+                today.getFullYear(),
+                String(today.getMonth() + 1).padStart(2, "0"),
+                String(today.getDate()).padStart(2, "0")
+            ].join("-");
+
+            if (preferredDate < todayString) {
+                throw new Error("Please choose today or a future date.");
+            }
+
+            const booking = {
+                user_id: user.id,
+                session_type: "student_kickstart",
+                preferred_date: preferredDate,
+                preferred_time: preferredTime,
+                duration_minutes: duration,
+                questions:
+                    document.getElementById("session-questions")
+                        .value.trim() || null,
+                status: "pending"
+            };
+
+            const { error: bookingError } = await supabaseClient
+                .from("session_bookings")
+                .insert(booking);
+
+            if (bookingError) {
+                throw bookingError;
+            }
+
+            message.style.color = "#009966";
+            message.textContent =
+                "Your request has been submitted! The NEXO team will confirm your session.";
+
+            studentSessionForm.reset();
+
+        } catch (error) {
+            console.error("Session booking error:", error);
+
+            message.style.color = "#dc2626";
+            message.textContent =
+                "Could not submit your request: " + error.message;
+
+        } finally {
+            submitButton.disabled = false;
+        }
+    });
 }
